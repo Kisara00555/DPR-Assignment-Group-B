@@ -1,0 +1,12 @@
+---
+title: "final assignment"
+output: html_document
+---
+
+# Step 1: Load the Dataset
+
+# Step 2: Data Cleaning and Preprocessing
+
+# Step 3: Exploratory Data Analysis (EDA)
+
+# Step 4: Save Clean Dataset
