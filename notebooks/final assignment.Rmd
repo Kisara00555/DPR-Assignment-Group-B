@@ -10,3 +10,17 @@ output: html_document
 # Step 3: Exploratory Data Analysis (EDA)
 
 # Step 4: Save Clean Dataset
+-----------------------------------------------------------------------------------------------
+# Load required libraries
+```{r}
+library(tidyverse)   # data manipulation and visualization
+library(janitor)     # data cleaning utilities
+library(here)        # reproducible file paths
+library(ggplot2)     # plotting
+```
+
+# Step 1: Load the Dataset
+
+In this step, the raw clinical data set is loaded from the `data/raw` directory.
+The `here()` package is used to ensure reproducible file paths.
+
