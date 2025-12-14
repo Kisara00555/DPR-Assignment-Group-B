@@ -23,4 +23,20 @@ library(ggplot2)     # plotting
 
 In this step, the raw clinical data set is loaded from the `data/raw` directory.
 The `here()` package is used to ensure reproducible file paths.
+```{r}
+linical_data <- read_tsv(
+  here("data", "raw", "msk_chord_2024_clinical_data.tsv"),
+)
 
+```
+## Inspections about the dataset
+```{r}
+glimpse(clinical_data)
+```
+```{r}
+colnames(clinical_data)
+```
+The data set contains clinical information related to chordoma patients,
+including demographic variables, tumor characteristics, and treatment-related
+fields. The structure and column names were inspected to understand the
+variables available for subsequent data cleaning and analysis.
