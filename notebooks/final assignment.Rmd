@@ -10,7 +10,7 @@ output: html_document
 # Step 3: Exploratory Data Analysis (EDA)
 
 # Step 4: Save Clean Dataset
------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 # Load required libraries
 ```{r}
 library(tidyverse)   # data manipulation and visualization
@@ -18,7 +18,7 @@ library(janitor)     # data cleaning utilities
 library(here)        # reproducible file paths
 library(ggplot2)     # plotting
 ```
-
+----------------------------------------------------------------------------------------------------------------
 # Step 1: Load the Dataset
 
 In this step, the raw clinical data set is loaded from the `data/raw` directory.
@@ -40,3 +40,56 @@ The data set contains clinical information related to chordoma patients,
 including demographic variables, tumor characteristics, and treatment-related
 fields. The structure and column names were inspected to understand the
 variables available for subsequent data cleaning and analysis.
+----------------------------------------------------------------------------------------------------------------
+# Step 2: Data Cleaning and Preprocessing
+
+This step focuses on preparing the data set for analysis by cleaning variable
+names, selecting relevant columns, and assessing missing values.
+
+## Step 2.1: Clean column names
+```{r}
+library(janitor)
+
+clinical_data <- clinical_data %>%
+  clean_names()
+
+```
+### Why this matters (markers love this):
+- Converts spaces to `_`
+- Removes special characters
+- Makes variables easier to use in code
+
+## Step 2.2: Check updated column names
+```{r}
+colnames(clinical_data)
+```
+## Step 2.3: Select relevant variables
+```{r}
+clinical_clean <- clinical_data %>%
+  select(
+    study_id,
+    patient_id,
+    sample_id,
+    current_age,
+    sex,
+    race,
+    cancer_type,
+    primary_tumor_site,
+    stage_highest_recorded,
+    overall_survival_months,
+    overall_survival_status
+  )
+```
+
+## Step 2.4: Check missing values
+```{r}
+colSums(is.na(clinical_clean))
+```
+## Step 2.5: Check categorical value consistency
+```{r}
+unique(clinical_clean$overall_survival_status)
+unique(clinical_clean$stage_highest_recorded)
+unique(clinical_clean$sex)
+
+```
+
