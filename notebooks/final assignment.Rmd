@@ -43,7 +43,7 @@ variables available for subsequent data cleaning and analysis.
 ----------------------------------------------------------------------------------------------------------------
 # Step 2: Data Cleaning and Preprocessing
 
-This step focuses on preparing the data set for analysis by cleaning variable
+This step focuses on preparing the data set for analysis by cleaning variable 
 names, selecting relevant columns, and assessing missing values.
 
 ## Step 2.1: Clean column names
@@ -92,4 +92,73 @@ unique(clinical_clean$stage_highest_recorded)
 unique(clinical_clean$sex)
 
 ```
+In this step, missing values are handled appropriately, categorical variables are standardized, and data types are corrected to prepare the data set for analysis.
+
+## Step 2.6: Handling missing values
+```{r}
+clinical_clean <- clinical_clean %>%
+  mutate(
+    current_age = ifelse(
+      is.na(current_age),
+      median(current_age, na.rm = TRUE),
+      current_age
+    )
+  )
+
+```
+
+Missing values in `current_age` were minimal and were imputed using the median
+to avoid bias from extreme values.
+
+## Step 2.7: Standardize categorical variables
+```{r}
+clinical_clean <- clinical_clean %>%
+  mutate(
+    overall_survival_status = case_when(
+      overall_survival_status == "0:LIVING" ~ "Living",
+      overall_survival_status == "1:DECEASED" ~ "Deceased",
+      TRUE ~ overall_survival_status
+    )
+  )
+
+# Sex variable (defensive cleaning)
+clinical_clean <- clinical_clean %>%
+  mutate(
+    sex = case_when(
+      sex %in% c("Male", "M") ~ "Male",
+      sex %in% c("Female", "F") ~ "Female",
+      TRUE ~ sex
+    )
+  )
+
+```
+
+## Step 2.8: Convert data types properly
+```{r}
+clinical_clean <- clinical_clean %>%
+  mutate(
+    current_age = as.numeric(current_age),
+    overall_survival_months = as.numeric(overall_survival_months)
+  )
+
+```
+
+## Step 2.9: Final Verification
+```{r}
+glimpse(clinical_clean)
+colSums(is.na(clinical_clean))
+
+```
+After preprocessing, all selected variables contained no missing values,and data types were verified to ensure suitability for analysis.
+
+## Step 2.10: Saving the final cleaned dataset
+```{r}
+write_csv(
+  clinical_clean,
+  here("data", "clean", "clinical_data_clean.csv")
+)
+
+```
+
+The data set was cleaned by standardizing column names, selecting relevant variables,handling missing values, correcting data types, and harmonizing categorical variables.The final cleaned data set is used for all downstream analyses.
 
