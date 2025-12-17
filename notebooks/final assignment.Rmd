@@ -40,7 +40,7 @@ The data set contains clinical information related to chordoma patients,
 including demographic variables, tumor characteristics, and treatment-related
 fields. The structure and column names were inspected to understand the
 variables available for subsequent data cleaning and analysis.
-----------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 # Step 2: Data Cleaning and Preprocessing
 
 This step focuses on preparing the data set for analysis by cleaning variable 
@@ -161,4 +161,33 @@ write_csv(
 ```
 
 The data set was cleaned by standardizing column names, selecting relevant variables,handling missing values, correcting data types, and harmonizing categorical variables.The final cleaned data set is used for all downstream analyses.
+---------------------------------------------------------------------------------------------------------------
+# Step 3: Exploratory Data Analysis (EDA)
+
+**Descriptive Overview**
+
+This section provides an initial overview of the cleaned clinical data set using summary statistics and frequency distributions.
+
+## Step 3.1: Loading the cleaned dataset
+```{r}
+clinical_clean <- read_csv(
+  here("data", "clean", "clinical_data_clean.csv")
+)
+```
+## Step 3.2: View basic structure
+```{r}
+glimpse(clinical_clean)
+```
+## Step 3.3: Summary statistics (numeric + categorical)
+```{r}
+summary(clinical_clean)
+```
+## Step 3.4: Frequency tables (key categorical variables)
+```{r}
+table(clinical_clean$sex)
+table(clinical_clean$overall_survival_status)
+table(clinical_clean$stage_highest_recorded)
+
+```
+The descriptive analysis shows the distribution of patient demographics,clinical characteristics, and survival outcomes, providing a foundation for more detailed exploratory analysis.
 
