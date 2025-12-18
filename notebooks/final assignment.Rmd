@@ -10,7 +10,7 @@ output: html_document
 # Step 3: Exploratory Data Analysis (EDA)
 
 # Step 4: Save Clean Dataset
-----------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 # Load required libraries
 ```{r}
 library(tidyverse)   # data manipulation and visualization
@@ -18,7 +18,7 @@ library(janitor)     # data cleaning utilities
 library(here)        # reproducible file paths
 library(ggplot2)     # plotting
 ```
-----------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 # Step 1: Load the Dataset
 
 In this step, the raw clinical data set is loaded from the `data/raw` directory.
@@ -190,4 +190,50 @@ table(clinical_clean$stage_highest_recorded)
 
 ```
 The descriptive analysis shows the distribution of patient demographics,clinical characteristics, and survival outcomes, providing a foundation for more detailed exploratory analysis.
+
+**Demographic Analysis**
+
+This section explores the demographic characteristics of patients,
+including age, sex, and race distributions.
+
+## Step 3.5: Age distribution
+```{r}
+ggplot(clinical_clean, aes(x = current_age)) +
+  geom_histogram(bins = 30) +
+  labs(
+    title = "Age Distribution of Patients",
+    x = "Age (years)",
+    y = "Count"
+  )
+
+```
+The age distribution shows the spread of patient ages in the data set,highlighting the most common age ranges represented. 
+
+## Step 3.6: Sex distribution
+```{r}
+ggplot(clinical_clean, aes(x = sex)) +
+  geom_bar() +
+  labs(
+    title = "Sex Distribution of Patients",
+    x = "Sex",
+    y = "Count"
+  )
+
+```
+This bar chart illustrates the distribution of patients by sex in the data set.
+
+## Step 3.7: Race distribution
+```{r}
+ggplot(clinical_clean, aes(x = race)) +
+  geom_bar() +
+  coord_flip() +
+  labs(
+    title = "Race Distribution of Patients",
+    x = "Race",
+    y = "Count"
+  )
+
+```
+The race distribution highlights the representation of different racial groups,with some categories appearing more frequently than others.
+
 
