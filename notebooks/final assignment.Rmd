@@ -199,7 +199,7 @@ including age, sex, and race distributions.
 ## Step 3.5: Age distribution
 ```{r}
 ggplot(clinical_clean, aes(x = current_age)) +
-  geom_histogram(bins = 30) +
+  geom_histogram(bins = 30,fill = "steelblue",color = "black") +
   labs(
     title = "Age Distribution of Patients",
     x = "Age (years)",
@@ -212,7 +212,7 @@ The age distribution shows the spread of patient ages in the data set,highlighti
 ## Step 3.6: Sex distribution
 ```{r}
 ggplot(clinical_clean, aes(x = sex)) +
-  geom_bar() +
+  geom_bar(fill = "steelblue",color = "black") +
   labs(
     title = "Sex Distribution of Patients",
     x = "Sex",
@@ -225,7 +225,7 @@ This bar chart illustrates the distribution of patients by sex in the data set.
 ## Step 3.7: Race distribution
 ```{r}
 ggplot(clinical_clean, aes(x = race)) +
-  geom_bar() +
+  geom_bar(fill = "steelblue", color ="black") +
   coord_flip() +
   labs(
     title = "Race Distribution of Patients",
@@ -235,5 +235,54 @@ ggplot(clinical_clean, aes(x = race)) +
 
 ```
 The race distribution highlights the representation of different racial groups,with some categories appearing more frequently than others.
+
+**Clinical Characteristics**
+
+This section explores clinical features of the patients, including cancer type,primary tumor site, and recorded cancer stage.
+
+## Step 3.8: Cancer type distribution
+```{r}
+ggplot(clinical_clean, aes(x = cancer_type)) +
+  geom_bar(fill = "steelblue", color = "black") +
+  coord_flip() +
+  labs(
+    title = "Distribution of Cancer Types",
+    x = "Cancer Type",
+    y = "Count"
+  )
+
+```
+The distribution shows the frequency of different cancer types represented in the data set, indicating which conditions are most commonly observed.
+
+## Step 3.9: Primary tumor site distribution
+```{r}
+ggplot(clinical_clean, aes(x = primary_tumor_site)) +
+  geom_bar(fill="steelblue", color = "black") +
+  coord_flip() +
+  labs(
+    title = "Primary Tumor Site Distribution",
+    x = "Tumor Site",
+    y = "Count"
+  )
+
+```
+This plot illustrates the anatomical locations of primary tumors among patients,highlighting the most frequently affected sites.
+
+## Step 3.10: Cancer stage distribution
+```{r}
+ggplot(clinical_clean, aes(x = stage_highest_recorded)) +
+  geom_bar(fill = "steelblue" , color = "black") +
+  labs(
+    title = "Cancer Stage Distribution",
+    x = "Stage",
+    y = "Count"
+  )
+
+```
+
+The cancer stage distribution provides insight into disease severity at diagnosis,with certain stages appearing more frequently than others.
+
+
+
 
 
