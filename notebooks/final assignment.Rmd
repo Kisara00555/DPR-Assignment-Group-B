@@ -282,6 +282,73 @@ ggplot(clinical_clean, aes(x = stage_highest_recorded)) +
 
 The cancer stage distribution provides insight into disease severity at diagnosis,with certain stages appearing more frequently than others.
 
+**Outcome and Survival Analysis**
+
+This section explores patient outcomes using survival status and survival time,and examines their relationship with cancer stage.
+
+## Step 3.11: urvival status distribution
+```{r}
+ggplot(clinical_clean, aes(x = overall_survival_status)) +
+  geom_bar(fill = "steelblue" , color = "black") +
+  labs(
+    title = "Survival Status Distribution",
+    x = "Survival Status",
+    y = "Count"
+  )
+
+```
+The majority of patients are categorized as living or deceased,providing an overview of outcome distribution within the data set.
+
+## Step 3.12: Survival months distribution
+```{r}
+ggplot(clinical_clean, aes(x = overall_survival_months)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "black") +
+  labs(
+    title = "Distribution of Overall Survival Time",
+    x = "Survival Time (months)",
+    y = "Count"
+  )
+
+```
+The survival time distribution shows variability in patient outcomes,with a higher concentration of cases at lower survival durations.
+
+## Step 3.13: Survival time by survival status
+```{r}
+ggplot(clinical_clean, aes(
+  x = overall_survival_status,
+  y = overall_survival_months
+)) +
+  geom_boxplot(fill = "steelblue" , color = "black") +
+  labs(
+    title = "Survival Time by Survival Status",
+    x = "Survival Status",
+    y = "Survival Time (months)"
+  )
+
+```
+This box plot compares survival times between living and deceased patients,highlighting differences in outcome distributions.
+
+## Step 3.14: Survival status vs cancer stage
+```{r}
+ggplot(clinical_clean, aes(
+  x = stage_highest_recorded,
+  fill = overall_survival_status
+)) +
+  geom_bar(position = "dodge") +
+  labs(
+    title = "Survival Status by Cancer Stage",
+    x = "Cancer Stage",
+    y = "Count",
+    fill = "Survival Status"
+  )
+
+```
+The relationship between cancer stage and survival status indicates variation in outcomes across different disease stages.
+
+**EDA Summary**
+Overall, exploratory analysis revealed meaningful patterns in patient demographics,clinical characteristics, and survival outcomes. These findings guide further analysis and interpretation.
+
+
 
 
 
