@@ -9,7 +9,7 @@ output: html_document
 
 # Step 3: Exploratory Data Analysis (EDA)
 
-# Step 4: Save Clean Dataset
+# Step 4: Interpretation
 ---------------------------------------------------------------------------------------------------------------
 # Load required libraries
 ```{r}
@@ -347,6 +347,25 @@ The relationship between cancer stage and survival status indicates variation in
 
 **EDA Summary**
 Overall, exploratory analysis revealed meaningful patterns in patient demographics,clinical characteristics, and survival outcomes. These findings guide further analysis and interpretation.
+---------------------------------------------------------------------------------------------------------------
+# Step 4: Interpretation
+
+**Descriptive Insights from EDA**
+
+## Step 4.1: Cancer stage distribution
+The distribution of cancer stages shows that early to mid-stage cases are more frequently represented in the data set, while advanced stages appear less often.This suggests that the data set contains a larger proportion of patients diagnosed before reaching late-stage disease.
+
+## Step 4.2: Primary tumor site distribution
+Analysis of primary tumor sites indicates that certain anatomical locations are more commonly affected than others. This uneven distribution reflects variation in cancer occurrence across different tumor sites within the data set.
+
+## Step 4.3: Survival status distribution
+The survival status distribution shows the proportion of patients categorized as living or deceased. Both outcome groups are well represented, providing a balanced overview of patient outcomes for exploratory analysis.
+
+Overall, the descriptive insights highlight key characteristics of the data set,including stage prevalence, common tumor sites, and outcome representation.These observations form the basis for further relationship-based interpretation.
+
+
+
+
 
 
 
