@@ -363,6 +363,19 @@ The survival status distribution shows the proportion of patients categorized as
 
 Overall, the descriptive insights highlight key characteristics of the data set,including stage prevalence, common tumor sites, and outcome representation.These observations form the basis for further relationship-based interpretation.
 
+**Relationship-Based Interpretation**
+
+## Step 4.4: Cancer Stage vs Survival Status
+The relationship between cancer stage and survival status shows that patients diagnosed at earlier stages (Stage 1–3) have better survival outcomes compared to those diagnosed at Stage 4. Advanced-stage cancer is associated with higher mortality, highlighting the impact of disease progression on patient outcomes.
+
+## Step 4.5: Primary Tumor Site and Outcomes
+Certain primary tumor sites are more frequently represented in the data set, such as lung and breast. Differences in tumor site prevalence may contribute to variation in survival outcomes, as prognosis and treatment response often depend on tumor origin.
+
+## step 4.6: Age and Survival
+Age appears to influence survival outcomes, with higher mortality observed among older patients. This suggests that demographic factors play an important role alongside clinical characteristics in determining patient prognosis.
+
+Overall, these relationships indicate that cancer stage, tumor site, and age are key factors associated with patient survival in this data set.
+
 
 
 
