@@ -376,6 +376,14 @@ Age appears to influence survival outcomes, with higher mortality observed among
 
 Overall, these relationships indicate that cancer stage, tumor site, and age are key factors associated with patient survival in this data set.
 
+**Relationship between Cancer Stage and Survival Status**
+
+The comparison between cancer stage and survival status indicates a clear pattern in patient outcomes. Early to mid-stage cases show a higher proportion of living patients, whereas advanced-stage cases are associated with a greater number of deceased outcomes. This suggests that disease stage plays an important role in survival.
+
+The observed trend aligns with clinical expectations, where earlier diagnosis is generally linked to better prognosis. Although this analysis is descriptive, it highlights a meaningful relationship between cancer progression and patient survival.
+
+Overall, this relationship-based insight complements the earlier uni variate findings and strengthens the exploratory understanding of outcome patterns within the data set.
+
 
 
 
