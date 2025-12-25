@@ -1,7 +1,13 @@
 ---
-title: "final assignment"
+title: "Clinical Data Analysis and Exploratory Study"
+author: "Kisara & Savindi"
+date: "`r Sys.Date()`"
 output: html_document
 ---
+
+## Introduction
+This notebook presents an exploratory analysis of a clinical data set.The workflow includes data loading, data cleaning and preprocessing,exploratory data analysis (EDA), and interpretation of findings.The results from this analysis provide a foundation for subsequent predictive modeling.
+---------------------------------------------------------------------------------------------------------------
 
 # Step 1: Load the Dataset
 
