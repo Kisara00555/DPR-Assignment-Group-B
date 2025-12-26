@@ -7,6 +7,8 @@ output: html_document
 
 ## Introduction
 This notebook presents an exploratory analysis of a clinical data set.The workflow includes data loading, data cleaning and preprocessing,exploratory data analysis (EDA), and interpretation of findings.The results from this analysis provide a foundation for subsequent predictive modeling.
+
+**Data source:** This study uses publicly available clinical cancer data from the MSK-CHORD 2024 data set.
 ---------------------------------------------------------------------------------------------------------------
 
 # Step 1: Load the Dataset
@@ -169,6 +171,8 @@ write_csv(
 The data set was cleaned by standardizing column names, selecting relevant variables,handling missing values, correcting data types, and harmonizing categorical variables.The final cleaned data set is used for all downstream analyses.
 ---------------------------------------------------------------------------------------------------------------
 # Step 3: Exploratory Data Analysis (EDA)
+
+The following exploratory analysis examines key demographic, clinical, and outcome-related variables to identify patterns and distributions within the data set.
 
 **Descriptive Overview**
 
@@ -397,10 +401,11 @@ The exploratory data analysis revealed clear patterns in patient demographics an
 Tumor stage analysis highlighted that most patients were diagnosed at intermediate to advanced stages, which may have implications for treatment outcomes. Treatment response showed a clear separation between responders and non-responders, indicating its importance as a key clinical variable.
 
 Survival status analysis demonstrated noticeable differences across stages and treatment responses, suggesting that disease stage and response to treatment are influential factors in patient outcomes. These findings provide meaningful insights into the data set and form a strong foundation for predictive modeling in the next phase of the analysis.
+---------------------------------------------------------------------------------------------------------------
 
+# Next Phase
+The insights from this exploratory analysis will be used as input for predictive modeling, including classification models and performance evaluation, which will be conducted in the subsequent phase of the project.
 _______________________________________________________________________________________________________________
-
-
 
 
 
