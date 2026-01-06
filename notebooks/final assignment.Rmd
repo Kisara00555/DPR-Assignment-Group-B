@@ -7,7 +7,11 @@ output: html_document
 
 ## Introduction
 This notebook presents an exploratory analysis of a clinical data set.The workflow includes data loading, data cleaning and preprocessing,exploratory data analysis (EDA), and interpretation of findings.The results from this analysis provide a foundation for subsequent predictive modeling.
-
+---------------------------------------------------------------------------------------------------------------
+## Contribution Statement
+**Kisara:** - Data loading, data cleaning and preprocessing, exploratory data analysis (EDA), and interpretation.
+**Savindi:** - 
+---------------------------------------------------------------------------------------------------------------
 **Data source:** This study uses publicly available clinical cancer data from the MSK-CHORD 2024 data set.
 ---------------------------------------------------------------------------------------------------------------
 
@@ -404,7 +408,7 @@ Survival status analysis demonstrated noticeable differences across stages and t
 ---------------------------------------------------------------------------------------------------------------
 
 # Next Phase
-The insights from this exploratory analysis will be used as input for predictive modeling, including classification models and performance evaluation, which will be conducted in the subsequent phase of the project.
+The insights from this exploratory analysis will be used as input for predictive modeling, including classification models and performance evaluation, which will be conducted in the next stage of the project.
 _______________________________________________________________________________________________________________
 
 
