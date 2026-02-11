@@ -36,7 +36,7 @@ library(ggplot2)     # plotting
 In this step, the raw clinical data set is loaded from the `data/raw` directory.
 The `here()` package is used to ensure reproducible file paths.
 ```{r}
-clinical_data <- read_tsv(
+linical_data <- read_tsv(
   here("data", "raw", "msk_chord_2024_clinical_data.tsv"),
 )
 
@@ -66,7 +66,7 @@ clinical_data <- clinical_data %>%
   clean_names()
 
 ```
-### Why this matters:
+### Why this matters (markers love this):
 - Converts spaces to `_`
 - Removes special characters
 - Makes variables easier to use in code
@@ -408,59 +408,12 @@ Survival status analysis demonstrated noticeable differences across stages and t
 ---------------------------------------------------------------------------------------------------------------
 
 # Next Phase
-This section discusses the findings from the exploratory analysis in relation to the chosen analytical question
+The insights from this exploratory analysis will be used as input for predictive modeling, including classification models and performance evaluation, which will be conducted in the next stage of the project.
 _______________________________________________________________________________________________________________
 
-# Step 5: Analytical Interpretation
 
-## Step 5.1: Loading the  cleaned Dataset
-```{r}
-cancer_data <- read.csv(
-  here("data" , "clean" , "clinical_data_clean.csv")
-)
-```
 
-## Step 5.2: View basic structure
-```{r}
-glimpse(cancer_data)
-```
-The cleaned data set generated during the data preparation phase is loaded for future analysis.This ensures consistency and avoids repeating data cleaning steps.
 
-## Step 5.3 Feature Preparation
-```{r}
-# select relevant demographic and clinical variable for analysis
-cancer_data <- cancer_data %>%
-  select(
-   current_age,
-    sex,
-    cancer_type,
-    stage_highest_recorded,
-    overall_survival_status
-  )
-`
-```
 
-```{r}
-# Convert Gender to factor
-cancer_data$sex <- as.factor(cancer_data$sex)
-```
 
-```{r}
-# Convert stage highest recorded to ordered factor
-cancer_data$stage_highest_recorded <- factor(
-  cancer_data$stage_highest_recorded,
-  ordered = TRUE
-)
 
-cancer_data$cancer_type <- as.factor(cancer_data$cancer_type)
-
-cancer_data$overall_survival_status <- as.factor(
-  cancer_data$overall_survival_status
-)
-```
-
-```{r}
-# Check missing values
-colSums(is.na(cancer_data))
-```
-Relevant demographic and clinical variables were selected for analytical interpretation. Categorical variables were converted to factors to enable grouped comparisons. No further cleaning was required at this stage.
