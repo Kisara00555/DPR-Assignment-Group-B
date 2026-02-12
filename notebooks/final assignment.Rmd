@@ -9,8 +9,8 @@ output: html_document
 This notebook presents an exploratory analysis of a clinical data set.The workflow includes data loading, data cleaning and preprocessing,exploratory data analysis (EDA), and interpretation of findings.The results from this analysis provide a foundation for subsequent predictive modeling.
 ---------------------------------------------------------------------------------------------------------------
 ## Contribution Statement
-**Kisara:** - Data loading, data cleaning and preprocessing, exploratory data analysis (EDA), and interpretation.
-**Savindi:** - 
+**Kisara:** - Data loading, Data cleaning and preprocessing, exploratory data analysis (EDA), and interpretation.
+**Savindi:** - Analytical Interpretation,Relationship Between Patient Characteristics and Survival Outcome, Overall Answer to the question
 ---------------------------------------------------------------------------------------------------------------
 **Data source:** This study uses publicly available clinical cancer data from the MSK-CHORD 2024 data set.
 ---------------------------------------------------------------------------------------------------------------
@@ -22,6 +22,10 @@ This notebook presents an exploratory analysis of a clinical data set.The workfl
 # Step 3: Exploratory Data Analysis (EDA)
 
 # Step 4: Interpretation
+
+# Step 5: Analytical Interpreation
+
+# Step 6: Relationship Between Patient Characteristics and Survival Outcome
 ---------------------------------------------------------------------------------------------------------------
 # Load required libraries
 ```{r}
@@ -426,7 +430,7 @@ glimpse(cancer_data)
 ```
 The cleaned data set generated during the data preparation phase is loaded for future analysis.This ensures consistency and avoids repeating data cleaning steps.
 
-## Step 5.3 Feature Preparation
+## Step 5.3: Feature Preparation
 ```{r}
 # select relevant demographic and clinical variable for analysis
 cancer_data <- cancer_data %>%
@@ -464,3 +468,120 @@ cancer_data$overall_survival_status <- as.factor(
 colSums(is.na(cancer_data))
 ```
 Relevant demographic and clinical variables were selected for analytical interpretation. Categorical variables were converted to factors to enable grouped comparisons. No further cleaning was required at this stage.
+------------------------------------------------------------------------------------------------------
+# Step 6: Relationship Between Patient Characteristics and Survival Outcome
+
+## Step 6.1: Age vs Seravial Outcomes
+```{r}
+# Summary statistics for age by survival status
+aggregate(
+  current_age ~ overall_survival_status,
+  data = cancer_data,
+  FUN = function(x) c(mean = mean(x), median = median(x))
+)
+```
+
+
+```{r}
+# Boxplot: Age vs Survival Status
+ggplot(cancer_data, aes(x = overall_survival_status, y = current_age, fill = overall_survival_status)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Age Distribution by Survival Status",
+    x = "Survival Status",
+    y = "Age"
+  ) +
+  theme_minimal()
+
+
+
+```
+Age shows moderate variation between living and deceased patients.
+Differences in median age suggest a possible association with survival outcomes.
+
+## Step 6.2: Sex vs Survival Outcomes
+```{r}
+# Sex distribution by survival status
+table(cancer_data$sex, cancer_data$overall_survival_status)
+
+```
+```{r}
+# Bar chart: Sex vs Survival Status
+ggplot(cancer_data, aes(x = sex, fill = overall_survival_status)) +
+  geom_bar(position = "dodge") +
+  labs(
+    title = "Survival Status by Sex",
+    x = "Sex",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+Survival distribution appears relatively similar between sexes.
+Sex feature alone does not show a strong difference in survival outcome.
+
+## Step 6.3: Tumor Stage vs Suraival Outcomes
+```{r}
+# Tumor stage vs survival status table
+table(cancer_data$stage_highest_recorded,
+      cancer_data$overall_survival_status)
+```
+```{r}
+# Stacked proportion bar chart
+ggplot(cancer_data,
+       aes(x = stage_highest_recorded,
+           fill = overall_survival_status)) +
+  geom_bar(position = "fill") +
+  labs(
+    title = "Survival Outcome Across Tumor Stages",
+    x = "Tumor Stage",
+    y = "Proportion"
+  ) +
+  theme_minimal()
+```
+Advanced tumor stages show a higher proportion of deceased patients.
+Earlier stages are associated with improved survival outcomes.
+
+## Step 6.4: Cancer Type vs Survival Outcomes
+```{r}
+# Cancer type vs survival status table
+table(cancer_data$cancer_type,
+      cancer_data$overall_survival_status)
+
+```
+```{r}
+# Proportion plot
+ggplot(cancer_data,
+       aes(x = cancer_type,
+           fill = overall_survival_status)) +
+  geom_bar(position = "fill") +
+  labs(
+    title = "Survival Outcome by Cancer Type",
+    x = "Cancer Type",
+    y = "Proportion"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+Survival outcomes differ across cancer types.
+Certain cancer categories demonstrate higher mortality proportions
+
+**Interpretation Summary**
+
+Age shows moderate differences between living and deceased patients.
+
+Sex demonstrates minimal variation in survival outcome.
+
+Higher tumor stages are associated with poorer survival.
+
+Cancer type influences survival patterns.
+
+**Answer to the Analytical Question**
+
+Question:
+Can basic patient demographics (age, gender) and clinical features (tumor type, stage) be used to understand primary treatment response?
+
+Answer:
+Using overall survival status as a proxy for treatment response, the analysis demonstrates that demographic and clinical features provide meaningful insight into patient outcomes. Age shows moderate variation between survival groups, while sex shows limited influence. Clinical characteristics, particularly tumor stage and cancer type, display clearer associations with survival outcomes. Advanced stages are linked to poorer outcomes, and survival proportions vary by cancer type. Therefore, even without predictive modeling, these features are sufficient to understand patterns in patient treatment response.
+
+
