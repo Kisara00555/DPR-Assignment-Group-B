@@ -468,7 +468,7 @@ cancer_data$overall_survival_status <- as.factor(
 colSums(is.na(cancer_data))
 ```
 Relevant demographic and clinical variables were selected for analytical interpretation. Categorical variables were converted to factors to enable grouped comparisons. No further cleaning was required at this stage.
-------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 # Step 6: Relationship Between Patient Characteristics and Survival Outcome
 
 ## Step 6.1: Age vs Seravial Outcomes
@@ -483,7 +483,7 @@ aggregate(
 
 
 ```{r}
-# Boxplot: Age vs Survival Status
+# Box plot: Age vs Survival Status
 ggplot(cancer_data, aes(x = overall_survival_status, y = current_age, fill = overall_survival_status)) +
   geom_boxplot(alpha = 0.7) +
   labs(
@@ -498,6 +498,30 @@ ggplot(cancer_data, aes(x = overall_survival_status, y = current_age, fill = ove
 ```
 Age shows moderate variation between living and deceased patients.
 Differences in median age suggest a possible association with survival outcomes.
+
+```{r}
+# Create age groups for better visualization of the bar chart
+cancer_data <- cancer_data %>%
+  mutate(age_group = case_when(
+    current_age <= 40 ~ "≤40",
+    current_age <= 60 ~ "41–60",
+    current_age <= 80 ~ "61–80",
+    current_age > 80  ~ "80+",
+    TRUE ~ "Unknown"
+  )) %>%
+  mutate(age_group = factor(age_group, levels = c("≤40", "41–60", "61–80", "80+")))
+
+ggplot(cancer_data, aes(x = age_group, fill = overall_survival_status)) +
+  geom_bar(position = "dodge") +
+  labs(
+    title = "Treatment Response Across Age Groups",
+    x = "Age Group",
+    y = "Count",
+    fill = "Treatment Response"
+  ) +
+  theme_minimal()
+```
+This bar chart categorizes patients into life stages to visualize the volume of outcomes. While the box plot showed the age range, this reveals that the 61–80 group is the most represented, allowing us to see how mortality counts scale with the population size in each bracket.
 
 ## Step 6.2: Sex vs Survival Outcomes
 ```{r}
@@ -566,15 +590,35 @@ ggplot(cancer_data,
 Survival outcomes differ across cancer types.
 Certain cancer categories demonstrate higher mortality proportions
 
+```{r}
+target_cancers <- c("Breast Cancer", "Colorectal Cancer", 
+                    "Non-Small Cell Lung Cancer", "Pancreatic Cancer", "Prostate Cancer")
+
+cancer_data_sub <- cancer_data %>% 
+  filter(cancer_type %in% target_cancers)
+
+ggplot(cancer_data_sub, aes(x = cancer_type, fill = overall_survival_status)) +
+  geom_bar(position = "dodge") +
+  labs(
+    title = "Treatment Response by Tumor Type",
+    x = "Tumor Type",
+    y = "Count",
+    fill = "Treatment Response"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+This plot shows the actual frequency of survival outcomes for the most common cancer types. It highlights that while Lung Cancer has the highest volume, Pancreatic Cancer shows a noticeably higher count of deceased patients compared to living ones, providing a clearer view of clinical severity than proportions alone.
+
 **Interpretation Summary**
 
-Age shows moderate differences between living and deceased patients.
+1) Age shows moderate differences between living and deceased patients.
 
-Sex demonstrates minimal variation in survival outcome.
+2) Sex demonstrates minimal variation in survival outcome.
 
-Higher tumor stages are associated with poorer survival.
+3) Higher tumor stages are associated with poorer survival.
 
-Cancer type influences survival patterns.
+4) Cancer type influences survival patterns.
 
 **Answer to the Analytical Question**
 
