@@ -304,7 +304,7 @@ The cancer stage distribution provides insight into disease severity at diagnosi
 
 This section explores patient outcomes using survival status and survival time,and examines their relationship with cancer stage.
 
-## Step 3.11: urvival status distribution
+## Step 3.11: Survival status distribution
 ```{r}
 ggplot(clinical_clean, aes(x = overall_survival_status)) +
   geom_bar(fill = "steelblue" , color = "black") +
@@ -441,7 +441,6 @@ cancer_data <- cancer_data %>%
     stage_highest_recorded,
     overall_survival_status
   )
-`
 ```
 
 ```{r}
