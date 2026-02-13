@@ -9,13 +9,8 @@ output: html_document
 This notebook presents an exploratory analysis of a clinical data set.The workflow includes data loading, data cleaning and preprocessing,exploratory data analysis (EDA), and interpretation of findings.The results from this analysis provide a foundation for subsequent predictive modeling.
 ---------------------------------------------------------------------------------------------------------------
 ## Contribution Statement
-<<<<<<< HEAD
-**Kisara:** - Data loading, data cleaning and preprocessing, exploratory data analysis (EDA), and interpretation.
-**Savindi:** - 
-=======
 **Kisara:** - Data loading, Data cleaning and preprocessing, exploratory data analysis (EDA), and interpretation.
 **Savindi:** - Analytical Interpretation,Relationship Between Patient Characteristics and Survival Outcome, Overall Answer to the question
->>>>>>> savindi-work
 ---------------------------------------------------------------------------------------------------------------
 **Data source:** This study uses publicly available clinical cancer data from the MSK-CHORD 2024 data set.
 ---------------------------------------------------------------------------------------------------------------
@@ -27,13 +22,10 @@ This notebook presents an exploratory analysis of a clinical data set.The workfl
 # Step 3: Exploratory Data Analysis (EDA)
 
 # Step 4: Interpretation
-<<<<<<< HEAD
-=======
 
 # Step 5: Analytical Interpreation
 
 # Step 6: Relationship Between Patient Characteristics and Survival Outcome
->>>>>>> savindi-work
 ---------------------------------------------------------------------------------------------------------------
 # Load required libraries
 ```{r}
@@ -48,11 +40,7 @@ library(ggplot2)     # plotting
 In this step, the raw clinical data set is loaded from the `data/raw` directory.
 The `here()` package is used to ensure reproducible file paths.
 ```{r}
-<<<<<<< HEAD
-linical_data <- read_tsv(
-=======
 clinical_data <- read_tsv(
->>>>>>> savindi-work
   here("data", "raw", "msk_chord_2024_clinical_data.tsv"),
 )
 
@@ -82,11 +70,7 @@ clinical_data <- clinical_data %>%
   clean_names()
 
 ```
-<<<<<<< HEAD
-### Why this matters (markers love this):
-=======
 ### Why this matters:
->>>>>>> savindi-work
 - Converts spaces to `_`
 - Removes special characters
 - Makes variables easier to use in code
@@ -320,11 +304,7 @@ The cancer stage distribution provides insight into disease severity at diagnosi
 
 This section explores patient outcomes using survival status and survival time,and examines their relationship with cancer stage.
 
-<<<<<<< HEAD
-## Step 3.11: urvival status distribution
-=======
 ## Step 3.11: Survival status distribution
->>>>>>> savindi-work
 ```{r}
 ggplot(clinical_clean, aes(x = overall_survival_status)) +
   geom_bar(fill = "steelblue" , color = "black") +
@@ -442,12 +422,12 @@ ________________________________________________________________________________
 ```{r}
 cancer_data <- read.csv(
   here("data" , "clean" , "clinical_data_clean.csv")
-),
+)
 ```
 
 ## Step 5.2: View basic structure
 ```{r}
-glimpse(cancer_data),
+glimpse(cancer_data)
 ```
 The cleaned data set generated during the data preparation phase is loaded for future analysis.This ensures consistency and avoids repeating data cleaning steps.
 
@@ -461,12 +441,12 @@ cancer_data <- cancer_data %>%
     cancer_type,
     stage_highest_recorded,
     overall_survival_status
-  ),
+  )
 ```
 
 ```{r}
 # Convert Gender to factor
-cancer_data$sex <- as.factor(cancer_data$sex),
+cancer_data$sex <- as.factor(cancer_data$sex)
 ```
 
 ```{r}
@@ -474,18 +454,18 @@ cancer_data$sex <- as.factor(cancer_data$sex),
 cancer_data$stage_highest_recorded <- factor(
   cancer_data$stage_highest_recorded,
   ordered = TRUE
-),
+)
 
-cancer_data$cancer_type <- as.factor(cancer_data$cancer_type),
+cancer_data$cancer_type <- as.factor(cancer_data$cancer_type)
 
 cancer_data$overall_survival_status <- as.factor(
   cancer_data$overall_survival_status
-),
+)
 ```
 
 ```{r}
 # Check missing values
-colSums(is.na(cancer_data)),
+colSums(is.na(cancer_data))
 ```
 Relevant demographic and clinical variables were selected for analytical interpretation. Categorical variables were converted to factors to enable grouped comparisons. No further cleaning was required at this stage.
 ------------------------------------------------------------------------------------------------------
@@ -498,7 +478,7 @@ aggregate(
   current_age ~ overall_survival_status,
   data = cancer_data,
   FUN = function(x) c(mean = mean(x), median = median(x))
-),
+)
 ```
 
 
@@ -511,7 +491,7 @@ ggplot(cancer_data, aes(x = overall_survival_status, y = current_age, fill = ove
     x = "Survival Status",
     y = "Age"
   ) +
-  theme_minimal(),
+  theme_minimal()
 
 
 
@@ -522,7 +502,7 @@ Differences in median age suggest a possible association with survival outcomes.
 ## Step 6.2: Sex vs Survival Outcomes
 ```{r}
 # Sex distribution by survival status
-table(cancer_data$sex, cancer_data$overall_survival_status),
+table(cancer_data$sex, cancer_data$overall_survival_status)
 
 ```
 ```{r}
@@ -534,7 +514,7 @@ ggplot(cancer_data, aes(x = sex, fill = overall_survival_status)) +
     x = "Sex",
     y = "Count"
   ) +
-  theme_minimal(),
+  theme_minimal()
 ```
 Survival distribution appears relatively similar between sexes.
 Sex feature alone does not show a strong difference in survival outcome.
@@ -543,7 +523,7 @@ Sex feature alone does not show a strong difference in survival outcome.
 ```{r}
 # Tumor stage vs survival status table
 table(cancer_data$stage_highest_recorded,
-      cancer_data$overall_survival_status),
+      cancer_data$overall_survival_status)
 ```
 ```{r}
 # Stacked proportion bar chart
@@ -556,7 +536,7 @@ ggplot(cancer_data,
     x = "Tumor Stage",
     y = "Proportion"
   ) +
-  theme_minimal(),
+  theme_minimal()
 ```
 Advanced tumor stages show a higher proportion of deceased patients.
 Earlier stages are associated with improved survival outcomes.
@@ -565,7 +545,7 @@ Earlier stages are associated with improved survival outcomes.
 ```{r}
 # Cancer type vs survival status table
 table(cancer_data$cancer_type,
-      cancer_data$overall_survival_status),
+      cancer_data$overall_survival_status)
 
 ```
 ```{r}
