@@ -518,8 +518,7 @@ ggplot(cancer_data, aes(x = age_group, fill = overall_survival_status)) +
     x = "Age Group",
     y = "Count",
     fill = "Treatment Response"
-  ) +
-  theme_minimal()
+  )
 ```
 This bar chart categorizes patients into life stages to visualize the volume of outcomes. While the box plot showed the age range, this reveals that the 61–80 group is the most represented, allowing us to see how mortality counts scale with the population size in each bracket.
 
@@ -605,7 +604,6 @@ ggplot(cancer_data_sub, aes(x = cancer_type, fill = overall_survival_status)) +
     y = "Count",
     fill = "Treatment Response"
   ) +
-  theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 This plot shows the actual frequency of survival outcomes for the most common cancer types. It highlights that while Lung Cancer has the highest volume, Pancreatic Cancer shows a noticeably higher count of deceased patients compared to living ones, providing a clearer view of clinical severity than proportions alone.
