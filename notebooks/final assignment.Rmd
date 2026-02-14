@@ -34,7 +34,7 @@ library(janitor)     # data cleaning utilities
 library(here)        # reproducible file paths
 library(ggplot2)     # plotting
 ```
----------------------------------------------------------------------------------------------------------------
+_______________________________________________________________________________________________________________
 # Step 1: Load the Data set
 
 In this step, the raw clinical data set is loaded from the `data/raw` directory.
@@ -45,16 +45,14 @@ clinical_data <- read_tsv(
 )
 
 ```
-Inspections about the dataset
+## Inspections about the data set
 ```{r}
 glimpse(clinical_data)
 ```
 ```{r}
 colnames(clinical_data)
 ```
-The data set contains clinical information related to chordoma patients,
-including demographic variables, tumor characteristics, and treatment-related
-fields. The structure and column names were inspected to understand the
+The data set contains clinical information related to chordoma patients,including demographic variables, tumor characteristics, and treatment-related fields. The structure and column names were inspected to understand the
 variables available for subsequent data cleaning and analysis.
 ---------------------------------------------------------------------------------------------------------------
 # Step 2: Data Cleaning and Preprocessing
@@ -70,6 +68,7 @@ clinical_data <- clinical_data %>%
   clean_names()
 
 ```
+
 ### Why this matters:
 - Converts spaces to `_`
 - Removes special characters
