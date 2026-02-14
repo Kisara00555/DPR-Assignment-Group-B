@@ -15,18 +15,18 @@ This notebook presents an exploratory analysis of a clinical data set.The workfl
 **Data source:** This study uses publicly available clinical cancer data from the MSK-CHORD 2024 data set.
 ---------------------------------------------------------------------------------------------------------------
 
-# Step 1: Load the Dataset
+## Step 1: Load the Dataset
 
-# Step 2: Data Cleaning and Preprocessing
+## Step 2: Data Cleaning and Preprocessing
 
-# Step 3: Exploratory Data Analysis (EDA)
+## Step 3: Exploratory Data Analysis (EDA)
 
-# Step 4: Interpretation
+## Step 4: Interpretation
 
-# Step 5: Analytical Interpreation
+## Step 5: Analytical Interpreation
 
-# Step 6: Relationship Between Patient Characteristics and Survival Outcome
----------------------------------------------------------------------------------------------------------------
+## Step 6: Relationship Between Patient Characteristics and Survival Outcome
+_______________________________________________________________________________________________________________
 # Load required libraries
 ```{r}
 library(tidyverse)   # data manipulation and visualization
@@ -409,8 +409,8 @@ The exploratory data analysis revealed clear patterns in patient demographics an
 Tumor stage analysis highlighted that most patients were diagnosed at intermediate to advanced stages, which may have implications for treatment outcomes. Treatment response showed a clear separation between responders and non-responders, indicating its importance as a key clinical variable.
 
 Survival status analysis demonstrated noticeable differences across stages and treatment responses, suggesting that disease stage and response to treatment are influential factors in patient outcomes. These findings provide meaningful insights into the data set and form a strong foundation for predictive modeling in the next phase of the analysis.
----------------------------------------------------------------------------------------------------------------
 
+_______________________________________________________________________________________________________________
 # Next Phase
 
 This section discusses the findings from the exploratory analysis in relation to the chosen analytical question
@@ -468,7 +468,7 @@ cancer_data$overall_survival_status <- as.factor(
 colSums(is.na(cancer_data))
 ```
 Relevant demographic and clinical variables were selected for analytical interpretation. Categorical variables were converted to factors to enable grouped comparisons. No further cleaning was required at this stage.
----------------------------------------------------------------------------------------------------------------
+_______________________________________________________________________________________________________________
 # Step 6: Relationship Between Patient Characteristics and Survival Outcome
 
 ## Step 6.1: Age vs Seravial Outcomes
