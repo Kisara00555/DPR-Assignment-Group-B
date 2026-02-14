@@ -35,7 +35,7 @@ library(here)        # reproducible file paths
 library(ggplot2)     # plotting
 ```
 ---------------------------------------------------------------------------------------------------------------
-# Step 1: Load the Dataset
+# Step 1: Load the Data set
 
 In this step, the raw clinical data set is loaded from the `data/raw` directory.
 The `here()` package is used to ensure reproducible file paths.
@@ -45,7 +45,7 @@ clinical_data <- read_tsv(
 )
 
 ```
-## Inspections about the dataset
+Inspections about the dataset
 ```{r}
 glimpse(clinical_data)
 ```
