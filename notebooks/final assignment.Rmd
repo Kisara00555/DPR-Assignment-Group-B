@@ -55,6 +55,7 @@ colnames(clinical_data)
 The data set contains clinical information related to chordoma patients,including demographic variables, tumor characteristics, and treatment-related fields. The structure and column names were inspected to understand the
 variables available for subsequent data cleaning and analysis.
 _______________________________________________________________________________________________________________
+
 # Step 2: Data Cleaning and Preprocessing
 
 This step focuses on preparing the data set for analysis by cleaning variable 
@@ -225,6 +226,7 @@ ggplot(clinical_clean, aes(x = current_age)) +
 
 ```
 
+
 The age distribution shows the spread of patient ages in the data set,highlighting the most common age ranges represented. 
 
 ## Step 3.6: Sex distribution
@@ -238,6 +240,7 @@ ggplot(clinical_clean, aes(x = sex)) +
   )
 
 ```
+
 
 This bar chart illustrates the distribution of patients by sex in the data set.
 
@@ -253,6 +256,7 @@ ggplot(clinical_clean, aes(x = race)) +
   )
 
 ```
+
 
 The race distribution highlights the representation of different racial groups,with some categories appearing more frequently than others.
 
@@ -273,6 +277,7 @@ ggplot(clinical_clean, aes(x = cancer_type)) +
 
 ```
 
+
 The distribution shows the frequency of different cancer types represented in the data set, indicating which conditions are most commonly observed.
 
 ## Step 3.9: Primary tumor site distribution
@@ -287,6 +292,7 @@ ggplot(clinical_clean, aes(x = primary_tumor_site)) +
   )
 
 ```
+
 
 This plot illustrates the anatomical locations of primary tumors among patients,highlighting the most frequently affected sites.
 
@@ -321,6 +327,7 @@ ggplot(clinical_clean, aes(x = overall_survival_status)) +
 
 ```
 
+
 The majority of patients are categorized as living or deceased,providing an overview of outcome distribution within the data set.
 
 ## Step 3.12: Survival months distribution
@@ -334,6 +341,7 @@ ggplot(clinical_clean, aes(x = overall_survival_months)) +
   )
 
 ```
+
 
 The survival time distribution shows variability in patient outcomes,with a higher concentration of cases at lower survival durations.
 
@@ -352,6 +360,7 @@ ggplot(clinical_clean, aes(
 
 ```
 
+
 This box plot compares survival times between living and deceased patients,highlighting differences in outcome distributions.
 
 ## Step 3.14: Survival status vs cancer stage
@@ -369,6 +378,7 @@ ggplot(clinical_clean, aes(
   )
 
 ```
+
 
 The relationship between cancer stage and survival status indicates variation in outcomes across different disease stages.
 
@@ -506,6 +516,7 @@ ggplot(cancer_data, aes(x = overall_survival_status, y = current_age, fill = ove
 
 ```
 
+
 Age shows moderate variation between living and deceased patients.
 Differences in median age suggest a possible association with survival outcomes.
 
@@ -531,6 +542,7 @@ ggplot(cancer_data, aes(x = age_group, fill = overall_survival_status)) +
   )
 ```
 
+
 This bar chart categorizes patients into life stages to visualize the volume of outcomes. While the box plot showed the age range, this reveals that the 61–80 group is the most represented, allowing us to see how mortality counts scale with the population size in each bracket.
 
 ## Step 6.2: Sex vs Survival Outcomes
@@ -550,6 +562,7 @@ ggplot(cancer_data, aes(x = sex, fill = overall_survival_status)) +
   ) +
   theme_minimal()
 ```
+
 
 Survival distribution appears relatively similar between sexes.
 Sex feature alone does not show a strong difference in survival outcome.
@@ -573,6 +586,7 @@ ggplot(cancer_data,
   ) +
   theme_minimal()
 ```
+
 
 Advanced tumor stages show a higher proportion of deceased patients.
 Earlier stages are associated with improved survival outcomes.
@@ -600,6 +614,7 @@ ggplot(cancer_data,
 
 ```
 
+
 Survival outcomes differ across cancer types.
 Certain cancer categories demonstrate higher mortality proportions
 
@@ -620,6 +635,7 @@ ggplot(cancer_data_sub, aes(x = cancer_type, fill = overall_survival_status)) +
   ) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
 
 This plot shows the actual frequency of survival outcomes for the most common cancer types. It highlights that while Lung Cancer has the highest volume, Pancreatic Cancer shows a noticeably higher count of deceased patients compared to living ones, providing a clearer view of clinical severity than proportions alone.
 
